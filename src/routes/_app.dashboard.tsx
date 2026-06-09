@@ -12,6 +12,9 @@ import {
   Cpu,
   Network,
   Loader2,
+  RotateCw,
+  PlayCircle,
+  AlertTriangle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
