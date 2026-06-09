@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { login } from "@/lib/auth";
+import { ParticlesBg } from "@/components/particles-bg";
 
 export const Route = createFileRoute("/login")({
   head: () => ({ meta: [{ title: "Sign in — CTN Indoor Control" }] }),
@@ -35,6 +36,7 @@ function LoginPage() {
 
   return (
     <div className="grid-bg relative flex h-screen w-screen items-center justify-center overflow-hidden p-6">
+      <ParticlesBg />
       {/* Ambient orbs */}
       <motion.div
         className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl"

@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { getSession, logout } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
+import { ParticlesBg } from "@/components/particles-bg";
 
 export const Route = createFileRoute("/_app")({
   beforeLoad: () => {
@@ -54,9 +55,10 @@ function AppLayout() {
   }
 
   return (
-    <div className="grid-bg flex h-screen w-screen overflow-hidden">
+    <div className="grid-bg relative flex h-screen w-screen overflow-hidden">
+      <ParticlesBg className="pointer-events-none fixed inset-0 z-0" />
       {/* Sidebar */}
-      <aside className="flex w-60 flex-col border-r border-border bg-sidebar">
+      <aside className="relative z-10 flex w-60 flex-col border-r border-border bg-sidebar">
         <div className="flex items-center gap-3 px-5 py-5">
           <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
             <Shield className="h-5 w-5" />
@@ -116,7 +118,7 @@ function AppLayout() {
       </aside>
 
       {/* Main */}
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="relative z-10 flex min-w-0 flex-1 flex-col">
         <header className="flex h-14 items-center justify-between border-b border-border bg-panel/40 px-6">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Activity className="h-4 w-4 text-primary" />

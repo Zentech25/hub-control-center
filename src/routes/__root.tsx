@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
+import { ParticlesProviderWrapper } from "@/components/particles-bg";
 
 function NotFoundComponent() {
   return (
@@ -117,8 +118,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
-      <Toaster theme="dark" position="top-right" richColors />
+      <ParticlesProviderWrapper>
+        <Outlet />
+        <Toaster theme="dark" position="top-right" richColors />
+      </ParticlesProviderWrapper>
     </QueryClientProvider>
   );
 }
