@@ -156,17 +156,19 @@ function Dashboard() {
     setTimeout(() => setRefreshing(false), 400);
   }
 
-  async function confirmShutdown() {
-    if (!shutdownTarget) return;
-    setShutdownLoading(true);
+  async function confirmAction() {
+    if (!actionTarget) return;
+    const { device, action } = actionTarget;
+    const meta = ACTION_META[action];
+    setActionLoading(true);
     try {
-      await shutdownDevice(shutdownTarget.ip);
-      toast.success(`Shutdown command sent to ${shutdownTarget.unit} · ${shutdownTarget.cpu}`);
-      setShutdownTarget(null);
+      await meta.run(device.ip);
+      toast.success(`${meta.toast}: ${device.unit} · ${device.cpu}`);
+      setActionTarget(null);
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
-      setShutdownLoading(false);
+      setActionLoading(false);
     }
   }
 
