@@ -12,6 +12,9 @@ import {
   Cpu,
   Network,
   Loader2,
+  RotateCw,
+  PlayCircle,
+  AlertTriangle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -31,10 +34,68 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { DEVICES, CATEGORIES, shutdownDevice, type Device } from "@/lib/devices";
+import {
+  DEVICES,
+  CATEGORIES,
+  shutdownDevice,
+  restartDevice,
+  bootDevice,
+  type Device,
+} from "@/lib/devices";
 import { useDeviceStatus } from "@/hooks/use-device-status";
 import { useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
+
+type PowerAction = "shutdown" | "restart" | "boot";
+
+interface ActionTarget {
+  device: Device;
+  action: PowerAction;
+}
+
+const ACTION_META: Record<
+  PowerAction,
+  {
+    title: string;
+    verb: string;
+    description: string;
+    icon: typeof Power;
+    confirmVariant: "destructive" | "default";
+    toast: string;
+    run: (ip: string) => Promise<{ ok: boolean }>;
+  }
+> = {
+  shutdown: {
+    title: "Confirm shutdown",
+    verb: "Shut down",
+    description:
+      "This will send a shutdown command to the target endpoint. The host will become unreachable until manually powered on.",
+    icon: Power,
+    confirmVariant: "destructive",
+    toast: "Shutdown command sent",
+    run: shutdownDevice,
+  },
+  restart: {
+    title: "Confirm restart",
+    verb: "Restart",
+    description:
+      "This will reboot the target endpoint. The host will be briefly unreachable while it restarts.",
+    icon: RotateCw,
+    confirmVariant: "destructive",
+    toast: "Restart command sent",
+    run: restartDevice,
+  },
+  boot: {
+    title: "Confirm boot",
+    verb: "Boot up",
+    description:
+      "This will send a Wake-on-LAN magic packet to the target endpoint. Boot can take up to a minute to complete.",
+    icon: PlayCircle,
+    confirmVariant: "default",
+    toast: "Boot command sent",
+    run: bootDevice,
+  },
+};
 
 export const Route = createFileRoute("/_app/dashboard")({
   head: () => ({ meta: [{ title: "Dashboard — CTN Indoor Control" }] }),
@@ -49,8 +110,8 @@ function Dashboard() {
   const [cat, setCat] = useState<string>("all");
   const [stat, setStat] = useState<StatusFilter>("all");
   const [refreshing, setRefreshing] = useState(false);
-  const [shutdownTarget, setShutdownTarget] = useState<Device | null>(null);
-  const [shutdownLoading, setShutdownLoading] = useState(false);
+  const [actionTarget, setActionTarget] = useState<ActionTarget | null>(null);
+  const [actionLoading, setActionLoading] = useState(false);
   const navigate = useNavigate();
 
   const filtered = useMemo(() => {
@@ -95,17 +156,19 @@ function Dashboard() {
     setTimeout(() => setRefreshing(false), 400);
   }
 
-  async function confirmShutdown() {
-    if (!shutdownTarget) return;
-    setShutdownLoading(true);
+  async function confirmAction() {
+    if (!actionTarget) return;
+    const { device, action } = actionTarget;
+    const meta = ACTION_META[action];
+    setActionLoading(true);
     try {
-      await shutdownDevice(shutdownTarget.ip);
-      toast.success(`Shutdown command sent to ${shutdownTarget.unit} · ${shutdownTarget.cpu}`);
-      setShutdownTarget(null);
+      await meta.run(device.ip);
+      toast.success(`${meta.toast}: ${device.unit} · ${device.cpu}`);
+      setActionTarget(null);
     } catch (e) {
       toast.error((e as Error).message);
     } finally {
-      setShutdownLoading(false);
+      setActionLoading(false);
     }
   }
 
@@ -208,7 +271,7 @@ function Dashboard() {
                         key={d.id}
                         device={d}
                         status={status[d.id] ?? "unknown"}
-                        onShutdown={() => setShutdownTarget(d)}
+                        onAction={(action) => setActionTarget({ device: d, action })}
                         onTransfer={() =>
                           navigate({
                             to: "/transfer",
@@ -225,49 +288,64 @@ function Dashboard() {
         </div>
       )}
 
-      {/* Shutdown dialog */}
-      <Dialog open={!!shutdownTarget} onOpenChange={(o) => !o && setShutdownTarget(null)}>
+      {/* Action confirmation dialog */}
+      <Dialog
+        open={!!actionTarget}
+        onOpenChange={(o) => !o && !actionLoading && setActionTarget(null)}
+      >
         <DialogContent>
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Power className="h-5 w-5 text-destructive" />
-              Confirm shutdown
-            </DialogTitle>
-            <DialogDescription>
-              This will send a shutdown command to the target endpoint. The host
-              will become unreachable until rebooted.
-            </DialogDescription>
-          </DialogHeader>
-          {shutdownTarget && (
-            <div className="rounded-md border border-border bg-panel/40 p-3 font-mono text-sm">
-              <div>
-                <span className="text-muted-foreground">Unit:</span> {shutdownTarget.unit}
-              </div>
-              <div>
-                <span className="text-muted-foreground">CPU:</span> {shutdownTarget.cpu}
-              </div>
-              <div>
-                <span className="text-muted-foreground">IP:</span> {shutdownTarget.ip}
-              </div>
-            </div>
-          )}
-          <DialogFooter>
-            <Button variant="ghost" onClick={() => setShutdownTarget(null)}>
-              Cancel
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={confirmShutdown}
-              disabled={shutdownLoading}
-            >
-              {shutdownLoading ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : (
-                <Power className="mr-2 h-4 w-4" />
-              )}
-              Shut down
-            </Button>
-          </DialogFooter>
+          {actionTarget && (() => {
+            const meta = ACTION_META[actionTarget.action];
+            const Icon = meta.icon;
+            const destructive = meta.confirmVariant === "destructive";
+            return (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-2">
+                    {destructive ? (
+                      <AlertTriangle className="h-5 w-5 text-destructive" />
+                    ) : (
+                      <Icon className="h-5 w-5 text-primary" />
+                    )}
+                    {meta.title}
+                  </DialogTitle>
+                  <DialogDescription>{meta.description}</DialogDescription>
+                </DialogHeader>
+                <div className="rounded-md border border-border bg-panel/40 p-3 font-mono text-sm">
+                  <div>
+                    <span className="text-muted-foreground">Unit:</span> {actionTarget.device.unit}
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">CPU:</span> {actionTarget.device.cpu}
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">IP:</span> {actionTarget.device.ip}
+                  </div>
+                </div>
+                <DialogFooter>
+                  <Button
+                    variant="ghost"
+                    onClick={() => setActionTarget(null)}
+                    disabled={actionLoading}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    variant={meta.confirmVariant}
+                    onClick={confirmAction}
+                    disabled={actionLoading}
+                  >
+                    {actionLoading ? (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : (
+                      <Icon className="mr-2 h-4 w-4" />
+                    )}
+                    {meta.verb}
+                  </Button>
+                </DialogFooter>
+              </>
+            );
+          })()}
         </DialogContent>
       </Dialog>
     </div>
@@ -313,12 +391,12 @@ function StatCard({
 function DeviceCard({
   device,
   status,
-  onShutdown,
+  onAction,
   onTransfer,
 }: {
   device: Device;
   status: "online" | "offline" | "unknown";
-  onShutdown: () => void;
+  onAction: (action: PowerAction) => void;
   onTransfer: () => void;
 }) {
   const isOn = status === "online";
@@ -373,16 +451,42 @@ function DeviceCard({
           <Send className="mr-1 h-3.5 w-3.5" />
           Transfer
         </Button>
-        <Button
-          size="sm"
-          variant="destructive"
-          className="flex-1"
-          onClick={onShutdown}
-          disabled={!isOn}
-        >
-          <Power className="mr-1 h-3.5 w-3.5" />
-          Shutdown
-        </Button>
+        {isOn ? (
+          <>
+            <Button
+              size="sm"
+              variant="secondary"
+              className="flex-1"
+              onClick={() => onAction("restart")}
+              title="Restart endpoint"
+            >
+              <RotateCw className="mr-1 h-3.5 w-3.5" />
+              Restart
+            </Button>
+            <Button
+              size="sm"
+              variant="destructive"
+              className="flex-1"
+              onClick={() => onAction("shutdown")}
+              title="Shut down endpoint"
+            >
+              <Power className="mr-1 h-3.5 w-3.5" />
+              Shutdown
+            </Button>
+          </>
+        ) : (
+          <Button
+            size="sm"
+            variant="default"
+            className="flex-1"
+            onClick={() => onAction("boot")}
+            disabled={status === "unknown"}
+            title={isOff ? "Send Wake-on-LAN packet" : "Status unknown"}
+          >
+            <PlayCircle className="mr-1 h-3.5 w-3.5" />
+            Boot up
+          </Button>
+        )}
       </div>
     </motion.div>
   );
