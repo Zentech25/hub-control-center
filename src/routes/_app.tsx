@@ -16,10 +16,14 @@ import {
   Shield,
   Activity,
   Clock,
+  DoorOpen,
 } from "lucide-react";
 import { getSession, logout } from "@/lib/auth";
+import { exitDesktopApp } from "@/lib/desktop";
 import { Button } from "@/components/ui/button";
 import { ParticlesBg } from "@/components/particles-bg";
+import zenLogo from "@/assets/zen-logo.jpg.asset.json";
+
 
 export const Route = createFileRoute("/_app")({
   beforeLoad: () => {
@@ -69,7 +73,13 @@ function AppLayout() {
             </div>
             <div className="font-mono text-sm font-semibold">Control Hub</div>
           </div>
+          <img
+            src={zenLogo.url}
+            alt="Zen Technologies"
+            className="ml-auto h-8 w-auto rounded-sm bg-white/95 p-1"
+          />
         </div>
+
 
         <nav className="mt-4 flex-1 space-y-1 px-3">
           {nav.map((item) => {
@@ -98,7 +108,7 @@ function AppLayout() {
           })}
         </nav>
 
-        <div className="m-3 rounded-md border border-border bg-panel/40 p-3">
+        <div className="m-3 space-y-2 rounded-md border border-border bg-panel/40 p-3">
           <div className="flex items-center justify-between">
             <div className="text-xs">
               <div className="font-mono text-sm">{username}</div>
@@ -114,7 +124,20 @@ function AppLayout() {
               <LogOut className="h-4 w-4" />
             </Button>
           </div>
+          {/* Exit-to-desktop: required for the borderless Tauri build where
+              the OS window has no close button. See src/lib/desktop.ts. */}
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => exitDesktopApp()}
+            className="w-full font-mono text-xs uppercase tracking-widest"
+            title="Quit the desktop application"
+          >
+            <DoorOpen className="mr-2 h-4 w-4" />
+            Exit to Desktop
+          </Button>
         </div>
+
       </aside>
 
       {/* Main */}

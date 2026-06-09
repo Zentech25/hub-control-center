@@ -1,12 +1,15 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Shield, Lock, User, Loader2, Radar } from "lucide-react";
+import { Shield, Lock, User, Loader2, Radar, DoorOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { login } from "@/lib/auth";
+import { exitDesktopApp } from "@/lib/desktop";
 import { ParticlesBg } from "@/components/particles-bg";
+import zenLogo from "@/assets/zen-logo.jpg.asset.json";
+
 
 export const Route = createFileRoute("/login")({
   head: () => ({ meta: [{ title: "Sign in — CTN Indoor Control" }] }),
