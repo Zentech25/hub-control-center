@@ -1,0 +1,1486 @@
+[
+  {
+    "id": 1,
+    "category": "Drone",
+    "unit": "DRONE 1",
+    "cpu": "IS/IO",
+    "ip": "191.168.1.1"
+  },
+  {
+    "id": 2,
+    "category": "Drone",
+    "unit": "DRONE 1",
+    "cpu": "HW",
+    "ip": "191.168.1.2"
+  },
+  {
+    "id": 3,
+    "category": "Drone",
+    "unit": "DRONE 2",
+    "cpu": "IS/IO",
+    "ip": "191.168.2.1"
+  },
+  {
+    "id": 4,
+    "category": "Drone",
+    "unit": "DRONE 2",
+    "cpu": "HW",
+    "ip": "191.168.2.2"
+  },
+  {
+    "id": 5,
+    "category": "Drone",
+    "unit": "DRONE 3",
+    "cpu": "IS/IO",
+    "ip": "191.168.3.1"
+  },
+  {
+    "id": 6,
+    "category": "Drone",
+    "unit": "DRONE 3",
+    "cpu": "HW",
+    "ip": "191.168.3.2"
+  },
+  {
+    "id": 7,
+    "category": "Drone",
+    "unit": "DRONE 4",
+    "cpu": "IS/IO",
+    "ip": "191.168.4.1"
+  },
+  {
+    "id": 8,
+    "category": "Drone",
+    "unit": "DRONE 4",
+    "cpu": "HW",
+    "ip": "191.168.4.2"
+  },
+  {
+    "id": 9,
+    "category": "Drone",
+    "unit": "DRONE 5",
+    "cpu": "IS/IO",
+    "ip": "191.168.5.1"
+  },
+  {
+    "id": 10,
+    "category": "Drone",
+    "unit": "DRONE 5",
+    "cpu": "HW",
+    "ip": "191.168.5.2"
+  },
+  {
+    "id": 11,
+    "category": "Drone",
+    "unit": "DRONE 6",
+    "cpu": "IS/IO",
+    "ip": "191.168.6.1"
+  },
+  {
+    "id": 12,
+    "category": "Drone",
+    "unit": "DRONE 6",
+    "cpu": "HW",
+    "ip": "191.168.6.2"
+  },
+  {
+    "id": 13,
+    "category": "Drone",
+    "unit": "DRONE 7",
+    "cpu": "IS/IO",
+    "ip": "191.168.7.1"
+  },
+  {
+    "id": 14,
+    "category": "Drone",
+    "unit": "DRONE 7",
+    "cpu": "HW",
+    "ip": "191.168.7.2"
+  },
+  {
+    "id": 15,
+    "category": "Drone",
+    "unit": "DRONE 8",
+    "cpu": "IS/IO",
+    "ip": "191.168.8.1"
+  },
+  {
+    "id": 16,
+    "category": "Drone",
+    "unit": "DRONE 8",
+    "cpu": "HW",
+    "ip": "191.168.8.2"
+  },
+  {
+    "id": 17,
+    "category": "Drone",
+    "unit": "DRONE 9",
+    "cpu": "IS/IO",
+    "ip": "191.168.9.1"
+  },
+  {
+    "id": 18,
+    "category": "Drone",
+    "unit": "DRONE 9",
+    "cpu": "HW",
+    "ip": "191.168.9.2"
+  },
+  {
+    "id": 19,
+    "category": "Drone",
+    "unit": "DRONE 10",
+    "cpu": "IS/IO",
+    "ip": "191.168.10.1"
+  },
+  {
+    "id": 20,
+    "category": "Drone",
+    "unit": "DRONE 10",
+    "cpu": "HW",
+    "ip": "191.168.10.2"
+  },
+  {
+    "id": 21,
+    "category": "Drone",
+    "unit": "DRONE 11",
+    "cpu": "IS/IO",
+    "ip": "191.168.11.1"
+  },
+  {
+    "id": 22,
+    "category": "Drone",
+    "unit": "DRONE 11",
+    "cpu": "HW",
+    "ip": "191.168.11.2"
+  },
+  {
+    "id": 23,
+    "category": "Drone",
+    "unit": "DRONE 12",
+    "cpu": "IS/IO",
+    "ip": "191.168.12.1"
+  },
+  {
+    "id": 24,
+    "category": "Drone",
+    "unit": "DRONE 12",
+    "cpu": "HW",
+    "ip": "191.168.12.2"
+  },
+  {
+    "id": 25,
+    "category": "Drone",
+    "unit": "DRONE 13",
+    "cpu": "IS/IO",
+    "ip": "191.168.13.1"
+  },
+  {
+    "id": 26,
+    "category": "Drone",
+    "unit": "DRONE 13",
+    "cpu": "HW",
+    "ip": "191.168.13.2"
+  },
+  {
+    "id": 27,
+    "category": "Drone",
+    "unit": "DRONE 14",
+    "cpu": "IS/IO",
+    "ip": "191.168.14.1"
+  },
+  {
+    "id": 28,
+    "category": "Drone",
+    "unit": "DRONE 14",
+    "cpu": "HW",
+    "ip": "191.168.14.2"
+  },
+  {
+    "id": 29,
+    "category": "Drone",
+    "unit": "DRONE 15",
+    "cpu": "IS/IO",
+    "ip": "191.168.15.1"
+  },
+  {
+    "id": 30,
+    "category": "Drone",
+    "unit": "DRONE 15",
+    "cpu": "HW",
+    "ip": "191.168.15.2"
+  },
+  {
+    "id": 31,
+    "category": "Drone",
+    "unit": "DRONE 16",
+    "cpu": "IS/IO",
+    "ip": "191.168.16.1"
+  },
+  {
+    "id": 32,
+    "category": "Drone",
+    "unit": "DRONE 16",
+    "cpu": "HW",
+    "ip": "191.168.16.2"
+  },
+  {
+    "id": 33,
+    "category": "Drone",
+    "unit": "DRONE 17",
+    "cpu": "IS/IO",
+    "ip": "191.168.17.1"
+  },
+  {
+    "id": 34,
+    "category": "Drone",
+    "unit": "DRONE 17",
+    "cpu": "HW",
+    "ip": "191.168.17.2"
+  },
+  {
+    "id": 35,
+    "category": "Drone",
+    "unit": "DRONE 18",
+    "cpu": "IS/IO",
+    "ip": "191.168.18.1"
+  },
+  {
+    "id": 36,
+    "category": "Drone",
+    "unit": "DRONE 18",
+    "cpu": "HW",
+    "ip": "191.168.18.2"
+  },
+  {
+    "id": 37,
+    "category": "Drone",
+    "unit": "DRONE 19",
+    "cpu": "IS/IO",
+    "ip": "191.168.19.1"
+  },
+  {
+    "id": 38,
+    "category": "Drone",
+    "unit": "DRONE 19",
+    "cpu": "HW",
+    "ip": "191.168.19.2"
+  },
+  {
+    "id": 39,
+    "category": "Drone",
+    "unit": "DRONE 20",
+    "cpu": "IS/IO",
+    "ip": "191.168.20.1"
+  },
+  {
+    "id": 40,
+    "category": "Drone",
+    "unit": "DRONE 20",
+    "cpu": "HW",
+    "ip": "191.168.20.2"
+  },
+  {
+    "id": 41,
+    "category": "Drone",
+    "unit": "DRONE 21",
+    "cpu": "IS/IO",
+    "ip": "191.168.21.1"
+  },
+  {
+    "id": 42,
+    "category": "Drone",
+    "unit": "DRONE 21",
+    "cpu": "HW",
+    "ip": "191.168.21.2"
+  },
+  {
+    "id": 43,
+    "category": "Drone",
+    "unit": "DRONE 22",
+    "cpu": "IS/IO",
+    "ip": "191.168.22.1"
+  },
+  {
+    "id": 44,
+    "category": "Drone",
+    "unit": "DRONE 22",
+    "cpu": "HW",
+    "ip": "191.168.22.2"
+  },
+  {
+    "id": 45,
+    "category": "Drone",
+    "unit": "DRONE 23",
+    "cpu": "IS/IO",
+    "ip": "191.168.23.1"
+  },
+  {
+    "id": 46,
+    "category": "Drone",
+    "unit": "DRONE 23",
+    "cpu": "HW",
+    "ip": "191.168.23.2"
+  },
+  {
+    "id": 47,
+    "category": "Drone",
+    "unit": "DRONE 24",
+    "cpu": "IS/IO",
+    "ip": "191.168.24.1"
+  },
+  {
+    "id": 48,
+    "category": "Drone",
+    "unit": "DRONE 24",
+    "cpu": "HW",
+    "ip": "191.168.24.2"
+  },
+  {
+    "id": 49,
+    "category": "Drone",
+    "unit": "DRONE 25",
+    "cpu": "IS/IO",
+    "ip": "191.168.25.1"
+  },
+  {
+    "id": 50,
+    "category": "Drone",
+    "unit": "DRONE 25",
+    "cpu": "HW",
+    "ip": "191.168.25.2"
+  },
+  {
+    "id": 51,
+    "category": "IWTS System",
+    "unit": "IWTS System 1",
+    "cpu": "IS/IO",
+    "ip": "191.168.31.1"
+  },
+  {
+    "id": 52,
+    "category": "IWTS System",
+    "unit": "IWTS System 1",
+    "cpu": "RF",
+    "ip": "191.168.31.2"
+  },
+  {
+    "id": 53,
+    "category": "IWTS System",
+    "unit": "IWTS System 1",
+    "cpu": "VS",
+    "ip": "191.168.31.3"
+  },
+  {
+    "id": 54,
+    "category": "IWTS System",
+    "unit": "IWTS System 1",
+    "cpu": "MCU",
+    "ip": "191.168.31.4"
+  },
+  {
+    "id": 55,
+    "category": "IWTS System",
+    "unit": "IWTS System 2",
+    "cpu": "IS/IO",
+    "ip": "191.168.32.1"
+  },
+  {
+    "id": 56,
+    "category": "IWTS System",
+    "unit": "IWTS System 2",
+    "cpu": "RF",
+    "ip": "191.168.32.2"
+  },
+  {
+    "id": 57,
+    "category": "IWTS System",
+    "unit": "IWTS System 2",
+    "cpu": "VS",
+    "ip": "191.168.32.3"
+  },
+  {
+    "id": 58,
+    "category": "IWTS System",
+    "unit": "IWTS System 2",
+    "cpu": "MCU",
+    "ip": "191.168.32.4"
+  },
+  {
+    "id": 59,
+    "category": "IWTS System",
+    "unit": "IWTS System 3",
+    "cpu": "IS/IO",
+    "ip": "191.168.33.1"
+  },
+  {
+    "id": 60,
+    "category": "IWTS System",
+    "unit": "IWTS System 3",
+    "cpu": "RF",
+    "ip": "191.168.33.2"
+  },
+  {
+    "id": 61,
+    "category": "IWTS System",
+    "unit": "IWTS System 3",
+    "cpu": "VS",
+    "ip": "191.168.33.3"
+  },
+  {
+    "id": 62,
+    "category": "IWTS System",
+    "unit": "IWTS System 3",
+    "cpu": "MCU",
+    "ip": "191.168.33.4"
+  },
+  {
+    "id": 63,
+    "category": "IWTS System",
+    "unit": "IWTS System 4",
+    "cpu": "IS/IO",
+    "ip": "191.168.34.1"
+  },
+  {
+    "id": 64,
+    "category": "IWTS System",
+    "unit": "IWTS System 4",
+    "cpu": "RF",
+    "ip": "191.168.34.2"
+  },
+  {
+    "id": 65,
+    "category": "IWTS System",
+    "unit": "IWTS System 4",
+    "cpu": "VS",
+    "ip": "191.168.34.3"
+  },
+  {
+    "id": 66,
+    "category": "IWTS System",
+    "unit": "IWTS System 4",
+    "cpu": "MCU",
+    "ip": "191.168.34.5"
+  },
+  {
+    "id": 67,
+    "category": "IWTS System",
+    "unit": "IWTS System 5",
+    "cpu": "IS/IO",
+    "ip": "191.168.35.1"
+  },
+  {
+    "id": 68,
+    "category": "IWTS System",
+    "unit": "IWTS System 5",
+    "cpu": "RF",
+    "ip": "191.168.35.2"
+  },
+  {
+    "id": 69,
+    "category": "IWTS System",
+    "unit": "IWTS System 5",
+    "cpu": "VS",
+    "ip": "191.168.35.3"
+  },
+  {
+    "id": 70,
+    "category": "IWTS System",
+    "unit": "IWTS System 5",
+    "cpu": "MCU",
+    "ip": "191.168.35.4"
+  },
+  {
+    "id": 71,
+    "category": "IWTS System",
+    "unit": "IWTS System 6",
+    "cpu": "IS/IO",
+    "ip": "191.168.36.1"
+  },
+  {
+    "id": 72,
+    "category": "IWTS System",
+    "unit": "IWTS System 6",
+    "cpu": "RF",
+    "ip": "191.168.36.2"
+  },
+  {
+    "id": 73,
+    "category": "IWTS System",
+    "unit": "IWTS System 6",
+    "cpu": "VS",
+    "ip": "191.168.36.3"
+  },
+  {
+    "id": 74,
+    "category": "IWTS System",
+    "unit": "IWTS System 6",
+    "cpu": "MCU",
+    "ip": "191.168.36.4"
+  },
+  {
+    "id": 75,
+    "category": "IWTS System",
+    "unit": "IWTS System 7",
+    "cpu": "IS/IO",
+    "ip": "191.168.37.1"
+  },
+  {
+    "id": 76,
+    "category": "IWTS System",
+    "unit": "IWTS System 7",
+    "cpu": "RF",
+    "ip": "191.168.37.2"
+  },
+  {
+    "id": 77,
+    "category": "IWTS System",
+    "unit": "IWTS System 7",
+    "cpu": "VS",
+    "ip": "191.168.37.3"
+  },
+  {
+    "id": 78,
+    "category": "IWTS System",
+    "unit": "IWTS System 7",
+    "cpu": "MCU",
+    "ip": "191.168.37.4"
+  },
+  {
+    "id": 79,
+    "category": "Sniper",
+    "unit": "Sniper 1",
+    "cpu": "IS/IO",
+    "ip": "191.168.41.1"
+  },
+  {
+    "id": 80,
+    "category": "Sniper",
+    "unit": "Sniper 1",
+    "cpu": "RF",
+    "ip": "191.168.41.2"
+  },
+  {
+    "id": 81,
+    "category": "Sniper",
+    "unit": "Sniper 1",
+    "cpu": "VS1",
+    "ip": "191.168.41.3"
+  },
+  {
+    "id": 82,
+    "category": "Sniper",
+    "unit": "Sniper 1",
+    "cpu": "VS2",
+    "ip": "191.168.41.4"
+  },
+  {
+    "id": 83,
+    "category": "Sniper",
+    "unit": "Sniper 1",
+    "cpu": "VS3",
+    "ip": "191.168.41.5"
+  },
+  {
+    "id": 84,
+    "category": "Sniper",
+    "unit": "Sniper 1",
+    "cpu": "MCU",
+    "ip": "191.168.41.6"
+  },
+  {
+    "id": 85,
+    "category": "Sniper",
+    "unit": "Sniper 2",
+    "cpu": "IS/IO",
+    "ip": "191.168.42.1"
+  },
+  {
+    "id": 86,
+    "category": "Sniper",
+    "unit": "Sniper 2",
+    "cpu": "RF",
+    "ip": "191.168.42.2"
+  },
+  {
+    "id": 87,
+    "category": "Sniper",
+    "unit": "Sniper 2",
+    "cpu": "VS1",
+    "ip": "191.168.42.3"
+  },
+  {
+    "id": 88,
+    "category": "Sniper",
+    "unit": "Sniper 2",
+    "cpu": "VS2",
+    "ip": "191.168.42.4"
+  },
+  {
+    "id": 89,
+    "category": "Sniper",
+    "unit": "Sniper 2",
+    "cpu": "VS3",
+    "ip": "191.168.42.5"
+  },
+  {
+    "id": 90,
+    "category": "Sniper",
+    "unit": "Sniper 2",
+    "cpu": "MCU",
+    "ip": "191.168.42.6"
+  },
+  {
+    "id": 91,
+    "category": "Sniper",
+    "unit": "Sniper 3",
+    "cpu": "IS/IO",
+    "ip": "191.168.43.1"
+  },
+  {
+    "id": 92,
+    "category": "Sniper",
+    "unit": "Sniper 3",
+    "cpu": "RF",
+    "ip": "191.168.43.2"
+  },
+  {
+    "id": 93,
+    "category": "Sniper",
+    "unit": "Sniper 3",
+    "cpu": "VS1",
+    "ip": "191.168.43.3"
+  },
+  {
+    "id": 94,
+    "category": "Sniper",
+    "unit": "Sniper 3",
+    "cpu": "VS2",
+    "ip": "191.168.43.4"
+  },
+  {
+    "id": 95,
+    "category": "Sniper",
+    "unit": "Sniper 3",
+    "cpu": "VS3",
+    "ip": "191.168.43.5"
+  },
+  {
+    "id": 96,
+    "category": "Sniper",
+    "unit": "Sniper 3",
+    "cpu": "MCU",
+    "ip": "191.168.43.6"
+  },
+  {
+    "id": 97,
+    "category": "Sniper",
+    "unit": "Sniper 4",
+    "cpu": "IS/IO",
+    "ip": "191.168.44.1"
+  },
+  {
+    "id": 98,
+    "category": "Sniper",
+    "unit": "Sniper 4",
+    "cpu": "RF",
+    "ip": "191.168.44.2"
+  },
+  {
+    "id": 99,
+    "category": "Sniper",
+    "unit": "Sniper 4",
+    "cpu": "VS1",
+    "ip": "191.168.44.3"
+  },
+  {
+    "id": 100,
+    "category": "Sniper",
+    "unit": "Sniper 4",
+    "cpu": "VS2",
+    "ip": "191.168.44.4"
+  },
+  {
+    "id": 101,
+    "category": "Sniper",
+    "unit": "Sniper 4",
+    "cpu": "VS3",
+    "ip": "191.168.44.5"
+  },
+  {
+    "id": 102,
+    "category": "Sniper",
+    "unit": "Sniper 4",
+    "cpu": "MCU",
+    "ip": "191.168.44.6"
+  },
+  {
+    "id": 103,
+    "category": "Sniper",
+    "unit": "Sniper 5",
+    "cpu": "IS/IO",
+    "ip": "191.168.45.1"
+  },
+  {
+    "id": 104,
+    "category": "Sniper",
+    "unit": "Sniper 5",
+    "cpu": "RF",
+    "ip": "191.168.45.2"
+  },
+  {
+    "id": 105,
+    "category": "Sniper",
+    "unit": "Sniper 5",
+    "cpu": "VS1",
+    "ip": "191.168.45.3"
+  },
+  {
+    "id": 106,
+    "category": "Sniper",
+    "unit": "Sniper 5",
+    "cpu": "VS2",
+    "ip": "191.168.45.4"
+  },
+  {
+    "id": 107,
+    "category": "Sniper",
+    "unit": "Sniper 5",
+    "cpu": "VS3",
+    "ip": "191.168.45.5"
+  },
+  {
+    "id": 108,
+    "category": "Sniper",
+    "unit": "Sniper 5",
+    "cpu": "MCU",
+    "ip": "191.168.45.6"
+  },
+  {
+    "id": 109,
+    "category": "Sniper",
+    "unit": "Sniper 6",
+    "cpu": "IS/IO",
+    "ip": "191.168.46.1"
+  },
+  {
+    "id": 110,
+    "category": "Sniper",
+    "unit": "Sniper 6",
+    "cpu": "RF",
+    "ip": "191.168.46.2"
+  },
+  {
+    "id": 111,
+    "category": "Sniper",
+    "unit": "Sniper 6",
+    "cpu": "VS1",
+    "ip": "191.168.46.3"
+  },
+  {
+    "id": 112,
+    "category": "Sniper",
+    "unit": "Sniper 6",
+    "cpu": "VS2",
+    "ip": "191.168.46.4"
+  },
+  {
+    "id": 113,
+    "category": "Sniper",
+    "unit": "Sniper 6",
+    "cpu": "VS3",
+    "ip": "191.168.46.5"
+  },
+  {
+    "id": 114,
+    "category": "Sniper",
+    "unit": "Sniper 6",
+    "cpu": "MCU",
+    "ip": "191.168.46.6"
+  },
+  {
+    "id": 115,
+    "category": "Sniper",
+    "unit": "Sniper 7",
+    "cpu": "IS/IO",
+    "ip": "191.168.47.1"
+  },
+  {
+    "id": 116,
+    "category": "Sniper",
+    "unit": "Sniper 7",
+    "cpu": "RF",
+    "ip": "191.168.47.2"
+  },
+  {
+    "id": 117,
+    "category": "Sniper",
+    "unit": "Sniper 7",
+    "cpu": "VS1",
+    "ip": "191.168.47.3"
+  },
+  {
+    "id": 118,
+    "category": "Sniper",
+    "unit": "Sniper 7",
+    "cpu": "VS2",
+    "ip": "191.168.47.4"
+  },
+  {
+    "id": 119,
+    "category": "Sniper",
+    "unit": "Sniper 7",
+    "cpu": "VS3",
+    "ip": "191.168.47.5"
+  },
+  {
+    "id": 120,
+    "category": "Sniper",
+    "unit": "Sniper 7",
+    "cpu": "MCU",
+    "ip": "191.168.47.6"
+  },
+  {
+    "id": 121,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 1",
+    "cpu": "IS/IO",
+    "ip": "191.168.51.1"
+  },
+  {
+    "id": 122,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 1",
+    "cpu": "VS",
+    "ip": "191.168.51.2"
+  },
+  {
+    "id": 123,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 1",
+    "cpu": "MPC",
+    "ip": "191.168.51.3"
+  },
+  {
+    "id": 124,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 1",
+    "cpu": "HW",
+    "ip": "191.168.51.4"
+  },
+  {
+    "id": 125,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 2",
+    "cpu": "IS/IO",
+    "ip": "191.168.52.1"
+  },
+  {
+    "id": 126,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 2",
+    "cpu": "VS",
+    "ip": "191.168.52.1"
+  },
+  {
+    "id": 127,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 2",
+    "cpu": "MPC",
+    "ip": "191.168.52.1"
+  },
+  {
+    "id": 128,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 2",
+    "cpu": "HW",
+    "ip": "191.168.52.1"
+  },
+  {
+    "id": 129,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 3",
+    "cpu": "IS/IO",
+    "ip": "191.168.53.1"
+  },
+  {
+    "id": 130,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 3",
+    "cpu": "VS",
+    "ip": "191.168.53.2"
+  },
+  {
+    "id": 131,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 3",
+    "cpu": "MPC",
+    "ip": "191.168.53.3"
+  },
+  {
+    "id": 132,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 3",
+    "cpu": "HW",
+    "ip": "191.168.53.4"
+  },
+  {
+    "id": 133,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 4",
+    "cpu": "IS/IO",
+    "ip": "191.168.54.1"
+  },
+  {
+    "id": 134,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 4",
+    "cpu": "VS",
+    "ip": "191.168.54.2"
+  },
+  {
+    "id": 135,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 4",
+    "cpu": "MPC",
+    "ip": "191.168.54.3"
+  },
+  {
+    "id": 136,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 4",
+    "cpu": "HW",
+    "ip": "191.168.54.4"
+  },
+  {
+    "id": 137,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 5",
+    "cpu": "IS/IO",
+    "ip": "191.168.55.1"
+  },
+  {
+    "id": 138,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 5",
+    "cpu": "VS",
+    "ip": "191.168.55.2"
+  },
+  {
+    "id": 139,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 5",
+    "cpu": "MPC",
+    "ip": "191.168.55.3"
+  },
+  {
+    "id": 140,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 5",
+    "cpu": "HW",
+    "ip": "191.168.55.4"
+  },
+  {
+    "id": 141,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 6",
+    "cpu": "IS/IO",
+    "ip": "191.168.56.1"
+  },
+  {
+    "id": 142,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 6",
+    "cpu": "VS",
+    "ip": "191.168.56.2"
+  },
+  {
+    "id": 143,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 6",
+    "cpu": "MPC",
+    "ip": "191.168.56.3"
+  },
+  {
+    "id": 144,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 6",
+    "cpu": "HW",
+    "ip": "191.168.56.4"
+  },
+  {
+    "id": 145,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 7",
+    "cpu": "IS/IO",
+    "ip": "191.168.57.1"
+  },
+  {
+    "id": 146,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 7",
+    "cpu": "VS",
+    "ip": "191.168.57.2"
+  },
+  {
+    "id": 147,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 7",
+    "cpu": "MPC",
+    "ip": "191.168.57.3"
+  },
+  {
+    "id": 148,
+    "category": "81 Mm Mortar",
+    "unit": "81 Mm Mortar 7",
+    "cpu": "HW",
+    "ip": "191.168.57.4"
+  },
+  {
+    "id": 149,
+    "category": "MMG",
+    "unit": "MMG 1",
+    "cpu": "IS/IO",
+    "ip": "191.168.61.1"
+  },
+  {
+    "id": 150,
+    "category": "MMG",
+    "unit": "MMG 1",
+    "cpu": "MCU",
+    "ip": "191.168.61.2"
+  },
+  {
+    "id": 151,
+    "category": "MMG",
+    "unit": "MMG 1",
+    "cpu": "HW",
+    "ip": "191.168.61.3"
+  },
+  {
+    "id": 152,
+    "category": "MMG",
+    "unit": "MMG 2",
+    "cpu": "IS/IO",
+    "ip": "191.168.62.1"
+  },
+  {
+    "id": 153,
+    "category": "MMG",
+    "unit": "MMG 2",
+    "cpu": "MCU",
+    "ip": "191.168.62.2"
+  },
+  {
+    "id": 154,
+    "category": "MMG",
+    "unit": "MMG 2",
+    "cpu": "HW",
+    "ip": "191.168.62.3"
+  },
+  {
+    "id": 155,
+    "category": "MMG",
+    "unit": "MMG 3",
+    "cpu": "IS/IO",
+    "ip": "191.168.63.1"
+  },
+  {
+    "id": 156,
+    "category": "MMG",
+    "unit": "MMG 3",
+    "cpu": "MCU",
+    "ip": "191.168.63.2"
+  },
+  {
+    "id": 157,
+    "category": "MMG",
+    "unit": "MMG 3",
+    "cpu": "HW",
+    "ip": "191.168.63.3"
+  },
+  {
+    "id": 158,
+    "category": "MMG",
+    "unit": "MMG 4",
+    "cpu": "IS/IO",
+    "ip": "191.168.64.1"
+  },
+  {
+    "id": 159,
+    "category": "MMG",
+    "unit": "MMG 4",
+    "cpu": "MCU",
+    "ip": "191.168.64.2"
+  },
+  {
+    "id": 160,
+    "category": "MMG",
+    "unit": "MMG 4",
+    "cpu": "HW",
+    "ip": "191.168.64.3"
+  },
+  {
+    "id": 161,
+    "category": "MMG",
+    "unit": "MMG 5",
+    "cpu": "IS/IO",
+    "ip": "191.168.65.1"
+  },
+  {
+    "id": 162,
+    "category": "MMG",
+    "unit": "MMG 5",
+    "cpu": "MCU",
+    "ip": "191.168.65.2"
+  },
+  {
+    "id": 163,
+    "category": "MMG",
+    "unit": "MMG 5",
+    "cpu": "HW",
+    "ip": "191.168.65.3"
+  },
+  {
+    "id": 164,
+    "category": "AGS",
+    "unit": "AGS 1",
+    "cpu": "IS/IO",
+    "ip": "191.168.71.1"
+  },
+  {
+    "id": 165,
+    "category": "AGS",
+    "unit": "AGS 1",
+    "cpu": "MCU",
+    "ip": "191.168.71.2"
+  },
+  {
+    "id": 166,
+    "category": "AGS",
+    "unit": "AGS 1",
+    "cpu": "HW",
+    "ip": "191.168.71.3"
+  },
+  {
+    "id": 167,
+    "category": "AGS",
+    "unit": "AGS 2",
+    "cpu": "IS/IO",
+    "ip": "191.168.72.1"
+  },
+  {
+    "id": 168,
+    "category": "AGS",
+    "unit": "AGS 2",
+    "cpu": "MCU",
+    "ip": "191.168.72.2"
+  },
+  {
+    "id": 169,
+    "category": "AGS",
+    "unit": "AGS 2",
+    "cpu": "HW",
+    "ip": "191.168.72.3"
+  },
+  {
+    "id": 170,
+    "category": "AGS",
+    "unit": "AGS 3",
+    "cpu": "IS/IO",
+    "ip": "191.168.73.1"
+  },
+  {
+    "id": 171,
+    "category": "AGS",
+    "unit": "AGS 3",
+    "cpu": "MCU",
+    "ip": "191.168.73.2"
+  },
+  {
+    "id": 172,
+    "category": "AGS",
+    "unit": "AGS 3",
+    "cpu": "HW",
+    "ip": "191.168.73.3"
+  },
+  {
+    "id": 173,
+    "category": "AGS",
+    "unit": "AGS 4",
+    "cpu": "IS/IO",
+    "ip": "191.168.74.1"
+  },
+  {
+    "id": 174,
+    "category": "AGS",
+    "unit": "AGS 4",
+    "cpu": "MCU",
+    "ip": "191.168.74.2"
+  },
+  {
+    "id": 175,
+    "category": "AGS",
+    "unit": "AGS 4",
+    "cpu": "HW",
+    "ip": "191.168.74.3"
+  },
+  {
+    "id": 176,
+    "category": "AGS",
+    "unit": "AGS 5",
+    "cpu": "IS/IO",
+    "ip": "191.168.75.1"
+  },
+  {
+    "id": 177,
+    "category": "AGS",
+    "unit": "AGS 5",
+    "cpu": "MCU",
+    "ip": "191.168.75.2"
+  },
+  {
+    "id": 178,
+    "category": "AGS",
+    "unit": "AGS 5",
+    "cpu": "HW",
+    "ip": "191.168.75.3"
+  },
+  {
+    "id": 179,
+    "category": "ATGM",
+    "unit": "ATGM 1",
+    "cpu": "IS/IO",
+    "ip": "191.168.81.1"
+  },
+  {
+    "id": 180,
+    "category": "ATGM",
+    "unit": "ATGM 1",
+    "cpu": "HW",
+    "ip": "191.168.81.2"
+  },
+  {
+    "id": 181,
+    "category": "ATGM",
+    "unit": "ATGM 2",
+    "cpu": "IS/IO",
+    "ip": "191.168.82.1"
+  },
+  {
+    "id": 182,
+    "category": "ATGM",
+    "unit": "ATGM 2",
+    "cpu": "HW",
+    "ip": "191.168.82.2"
+  },
+  {
+    "id": 183,
+    "category": "ATGM",
+    "unit": "ATGM 3",
+    "cpu": "IS/IO",
+    "ip": "191.168.83.1"
+  },
+  {
+    "id": 184,
+    "category": "ATGM",
+    "unit": "ATGM 3",
+    "cpu": "HW",
+    "ip": "191.168.83.2"
+  },
+  {
+    "id": 185,
+    "category": "ATGM",
+    "unit": "ATGM 4",
+    "cpu": "IS/IO",
+    "ip": "191.168.84.1"
+  },
+  {
+    "id": 186,
+    "category": "ATGM",
+    "unit": "ATGM 4",
+    "cpu": "HW",
+    "ip": "191.168.84.2"
+  },
+  {
+    "id": 187,
+    "category": "ATGM",
+    "unit": "ATGM 5",
+    "cpu": "IS/IO",
+    "ip": "191.168.85.1"
+  },
+  {
+    "id": 188,
+    "category": "ATGM",
+    "unit": "ATGM 5",
+    "cpu": "HW",
+    "ip": "191.168.85.2"
+  },
+  {
+    "id": 189,
+    "category": "C2",
+    "unit": "C2 -1",
+    "cpu": "IS/IO",
+    "ip": "191.168.91.1"
+  },
+  {
+    "id": 190,
+    "category": "C2",
+    "unit": "C2 -1",
+    "cpu": "VS1",
+    "ip": "191.168.91.2"
+  },
+  {
+    "id": 191,
+    "category": "C2",
+    "unit": "C2 -1",
+    "cpu": "VS2",
+    "ip": "191.168.91.3"
+  },
+  {
+    "id": 192,
+    "category": "C2",
+    "unit": "C2 -1",
+    "cpu": "VS3",
+    "ip": "191.168.91.4"
+  },
+  {
+    "id": 193,
+    "category": "C2",
+    "unit": "C2 -2",
+    "cpu": "IS/IO",
+    "ip": "191.168.92.1"
+  },
+  {
+    "id": 194,
+    "category": "C2",
+    "unit": "C2 -2",
+    "cpu": "VS1",
+    "ip": "191.168.92.1"
+  },
+  {
+    "id": 195,
+    "category": "C2",
+    "unit": "C2 -2",
+    "cpu": "VS2",
+    "ip": "191.168.92.1"
+  },
+  {
+    "id": 196,
+    "category": "C2",
+    "unit": "C2 -2",
+    "cpu": "VS3",
+    "ip": "191.168.92.1"
+  },
+  {
+    "id": 197,
+    "category": "C2",
+    "unit": "C2 -3",
+    "cpu": "IS/IO",
+    "ip": "191.168.93.1"
+  },
+  {
+    "id": 198,
+    "category": "C2",
+    "unit": "C2 -3",
+    "cpu": "VS1",
+    "ip": "191.168.93.2"
+  },
+  {
+    "id": 199,
+    "category": "C2",
+    "unit": "C2 -3",
+    "cpu": "VS2",
+    "ip": "191.168.93.3"
+  },
+  {
+    "id": 200,
+    "category": "C2",
+    "unit": "C2 -3",
+    "cpu": "VS3",
+    "ip": "191.168.93.4"
+  },
+  {
+    "id": 201,
+    "category": "C2",
+    "unit": "C2 -4",
+    "cpu": "IS/IO",
+    "ip": "191.168.94.1"
+  },
+  {
+    "id": 202,
+    "category": "C2",
+    "unit": "C2 -4",
+    "cpu": "VS1",
+    "ip": "191.168.94.2"
+  },
+  {
+    "id": 203,
+    "category": "C2",
+    "unit": "C2 -4",
+    "cpu": "VS2",
+    "ip": "191.168.94.3"
+  },
+  {
+    "id": 204,
+    "category": "C2",
+    "unit": "C2 -4",
+    "cpu": "VS3",
+    "ip": "191.168.94.4"
+  },
+  {
+    "id": 205,
+    "category": "C2",
+    "unit": "C2 -5",
+    "cpu": "IS/IO",
+    "ip": "191.168.95.1"
+  },
+  {
+    "id": 206,
+    "category": "C2",
+    "unit": "C2 -5",
+    "cpu": "VS1",
+    "ip": "191.168.95.2"
+  },
+  {
+    "id": 207,
+    "category": "C2",
+    "unit": "C2 -5",
+    "cpu": "VS2",
+    "ip": "191.168.95.3"
+  },
+  {
+    "id": 208,
+    "category": "C2",
+    "unit": "C2 -5",
+    "cpu": "VS3",
+    "ip": "191.168.95.4"
+  },
+  {
+    "id": 209,
+    "category": "C2",
+    "unit": "C2 -6",
+    "cpu": "IS/IO",
+    "ip": "191.168.96.1"
+  },
+  {
+    "id": 210,
+    "category": "C2",
+    "unit": "C2 -6",
+    "cpu": "VS1",
+    "ip": "191.168.96.2"
+  },
+  {
+    "id": 211,
+    "category": "C2",
+    "unit": "C2 -6",
+    "cpu": "VS2",
+    "ip": "191.168.96.3"
+  },
+  {
+    "id": 212,
+    "category": "C2",
+    "unit": "C2 -6",
+    "cpu": "VS3",
+    "ip": "191.168.96.4"
+  }
+]
