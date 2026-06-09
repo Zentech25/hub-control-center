@@ -36,6 +36,7 @@ function LoginPage() {
 
   return (
     <div className="grid-bg relative flex h-screen w-screen items-center justify-center overflow-hidden p-6">
+      <ParticlesBg />
       {/* Ambient orbs */}
       <motion.div
         className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl"
