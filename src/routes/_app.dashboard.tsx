@@ -391,12 +391,12 @@ function StatCard({
 function DeviceCard({
   device,
   status,
-  onShutdown,
+  onAction,
   onTransfer,
 }: {
   device: Device;
   status: "online" | "offline" | "unknown";
-  onShutdown: () => void;
+  onAction: (action: PowerAction) => void;
   onTransfer: () => void;
 }) {
   const isOn = status === "online";
@@ -451,16 +451,42 @@ function DeviceCard({
           <Send className="mr-1 h-3.5 w-3.5" />
           Transfer
         </Button>
-        <Button
-          size="sm"
-          variant="destructive"
-          className="flex-1"
-          onClick={onShutdown}
-          disabled={!isOn}
-        >
-          <Power className="mr-1 h-3.5 w-3.5" />
-          Shutdown
-        </Button>
+        {isOn ? (
+          <>
+            <Button
+              size="sm"
+              variant="secondary"
+              className="flex-1"
+              onClick={() => onAction("restart")}
+              title="Restart endpoint"
+            >
+              <RotateCw className="mr-1 h-3.5 w-3.5" />
+              Restart
+            </Button>
+            <Button
+              size="sm"
+              variant="destructive"
+              className="flex-1"
+              onClick={() => onAction("shutdown")}
+              title="Shut down endpoint"
+            >
+              <Power className="mr-1 h-3.5 w-3.5" />
+              Shutdown
+            </Button>
+          </>
+        ) : (
+          <Button
+            size="sm"
+            variant="default"
+            className="flex-1"
+            onClick={() => onAction("boot")}
+            disabled={status === "unknown"}
+            title={isOff ? "Send Wake-on-LAN packet" : "Status unknown"}
+          >
+            <PlayCircle className="mr-1 h-3.5 w-3.5" />
+            Boot up
+          </Button>
+        )}
       </div>
     </motion.div>
   );
