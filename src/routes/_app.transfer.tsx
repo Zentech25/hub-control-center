@@ -1,0 +1,223 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
+import { motion } from "motion/react";
+import { ArrowRight, FileUp, Loader2, Send, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Progress } from "@/components/ui/progress";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { DEVICES, transferFile } from "@/lib/devices";
+import { useDeviceStatus } from "@/hooks/use-device-status";
+import { toast } from "sonner";
+
+interface Search {
+  source?: string;
+}
+
+export const Route = createFileRoute("/_app/transfer")({
+  head: () => ({ meta: [{ title: "File Transfer — CTN Indoor Control" }] }),
+  validateSearch: (s: Record<string, unknown>): Search => ({
+    source: typeof s.source === "string" ? s.source : undefined,
+  }),
+  component: TransferPage,
+});
+
+function TransferPage() {
+  const { source: initial } = Route.useSearch();
+  const { status } = useDeviceStatus();
+  const [source, setSource] = useState<string>(initial ?? "");
+  const [dest, setDest] = useState<string>("");
+  const [filePath, setFilePath] = useState<string>("");
+  const [destPath, setDestPath] = useState<string>("C:\\Incoming\\");
+  const [pct, setPct] = useState(0);
+  const [running, setRunning] = useState(false);
+  const [done, setDone] = useState(false);
+
+  const onlineDevices = useMemo(
+    () => DEVICES.filter((d) => status[d.id] === "online"),
+    [status],
+  );
+
+  const sourceDev = DEVICES.find((d) => String(d.id) === source);
+  const destDev = DEVICES.find((d) => String(d.id) === dest);
+
+  async function onTransfer() {
+    if (!sourceDev || !destDev) return toast.error("Select source and destination");
+    if (sourceDev.id === destDev.id)
+      return toast.error("Source and destination must differ");
+    if (!filePath.trim()) return toast.error("Specify a file path on source");
+    setRunning(true);
+    setDone(false);
+    setPct(0);
+    try {
+      await transferFile({
+        sourceIp: sourceDev.ip,
+        destIp: destDev.ip,
+        filePath: filePath.trim(),
+        destPath: destPath.trim(),
+        onProgress: setPct,
+      });
+      setDone(true);
+      toast.success("Transfer complete");
+    } catch (e) {
+      toast.error((e as Error).message);
+    } finally {
+      setRunning(false);
+    }
+  }
+
+  return (
+    <div className="space-y-6 p-6">
+      <div>
+        <h1 className="text-2xl font-semibold tracking-tight">File Transfer</h1>
+        <p className="text-sm text-muted-foreground">
+          Push a file from one workstation in the hub to another. Only online
+          endpoints are eligible.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_auto_1fr]">
+        <EndpointPicker
+          label="Source"
+          value={source}
+          onChange={setSource}
+          devices={onlineDevices}
+        />
+        <div className="flex items-center justify-center">
+          <motion.div
+            animate={running ? { x: [0, 16, 0] } : {}}
+            transition={{ duration: 1, repeat: Infinity }}
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary"
+          >
+            <ArrowRight className="h-5 w-5" />
+          </motion.div>
+        </div>
+        <EndpointPicker
+          label="Destination"
+          value={dest}
+          onChange={setDest}
+          devices={onlineDevices}
+        />
+      </div>
+
+      <div className="panel grid grid-cols-1 gap-4 p-5 md:grid-cols-2">
+        <div className="space-y-2">
+          <Label htmlFor="src-path">Source file path</Label>
+          <div className="flex gap-2">
+            <Input
+              id="src-path"
+              value={filePath}
+              onChange={(e) => setFilePath(e.target.value)}
+              placeholder="C:\Data\report.bin"
+              className="font-mono"
+            />
+            <Button variant="secondary" type="button" title="Browse (Tauri integration)">
+              <FileUp className="h-4 w-4" />
+            </Button>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Path is resolved on the source host.
+          </p>
+        </div>
+        <div className="space-y-2">
+          <Label htmlFor="dst-path">Destination path</Label>
+          <Input
+            id="dst-path"
+            value={destPath}
+            onChange={(e) => setDestPath(e.target.value)}
+            placeholder="C:\Incoming\"
+            className="font-mono"
+          />
+          <p className="text-xs text-muted-foreground">
+            Directory on the destination host. File name is preserved.
+          </p>
+        </div>
+      </div>
+
+      {(running || done) && (
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="panel space-y-3 p-5"
+        >
+          <div className="flex items-center justify-between font-mono text-sm">
+            <span>{done ? "Complete" : "Transferring…"}</span>
+            <span>{pct}%</span>
+          </div>
+          <Progress value={pct} />
+          {done && (
+            <div className="flex items-center gap-2 text-sm text-online">
+              <CheckCircle2 className="h-4 w-4" />
+              File delivered to {destDev?.unit} ({destDev?.ip}).
+            </div>
+          )}
+        </motion.div>
+      )}
+
+      <div className="flex justify-end">
+        <Button onClick={onTransfer} disabled={running} className="font-mono uppercase tracking-widest">
+          {running ? (
+            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+          ) : (
+            <Send className="mr-2 h-4 w-4" />
+          )}
+          {running ? "Sending" : "Start Transfer"}
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function EndpointPicker({
+  label,
+  value,
+  onChange,
+  devices,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  devices: typeof DEVICES;
+}) {
+  const dev = DEVICES.find((d) => String(d.id) === value);
+  return (
+    <div className="panel space-y-3 p-5">
+      <Label className="text-xs uppercase tracking-widest text-muted-foreground">
+        {label}
+      </Label>
+      <Select value={value} onValueChange={onChange}>
+        <SelectTrigger>
+          <SelectValue placeholder="Select an online endpoint" />
+        </SelectTrigger>
+        <SelectContent className="max-h-[300px]">
+          {devices.length === 0 && (
+            <div className="px-2 py-3 text-sm text-muted-foreground">
+              No endpoints online
+            </div>
+          )}
+          {devices.map((d) => (
+            <SelectItem key={d.id} value={String(d.id)}>
+              <span className="font-mono text-xs">
+                {d.unit} · {d.cpu} · {d.ip}
+              </span>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+      {dev && (
+        <div className="rounded-md border border-border/60 bg-background/40 p-3 font-mono text-xs">
+          <div className="text-foreground">{dev.unit}</div>
+          <div className="text-muted-foreground">{dev.category} · {dev.cpu}</div>
+          <div className="mt-1 text-foreground">{dev.ip}</div>
+        </div>
+      )}
+    </div>
+  );
+}
