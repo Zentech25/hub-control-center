@@ -50,6 +50,33 @@ export async function shutdownDevice(ip: string): Promise<{ ok: boolean }> {
 }
 
 // =========================================================================
+// BACKEND INTEGRATION POINT — Restart
+// =========================================================================
+// export async function restartDevice(ip: string) {
+//   return await invoke("restart_device", { ip });
+// }
+// Rust side: `shutdown /r /t 0` (Windows) or `sudo reboot` (Linux).
+// =========================================================================
+export async function restartDevice(ip: string): Promise<{ ok: boolean }> {
+  await new Promise((r) => setTimeout(r, 800));
+  return { ok: true };
+}
+
+// =========================================================================
+// BACKEND INTEGRATION POINT — Wake / Boot (Wake-on-LAN)
+// =========================================================================
+// export async function bootDevice(ip: string, mac?: string) {
+//   return await invoke("boot_device", { ip, mac });
+// }
+// Rust side: send a Wake-on-LAN magic packet using e.g. the `wakey` crate.
+// Requires the target NIC to have WoL enabled in BIOS and OS.
+// =========================================================================
+export async function bootDevice(ip: string): Promise<{ ok: boolean }> {
+  await new Promise((r) => setTimeout(r, 800));
+  return { ok: true };
+}
+
+// =========================================================================
 // BACKEND INTEGRATION POINT — File transfer
 // =========================================================================
 // export async function transferFile(opts: {
