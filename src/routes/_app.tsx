@@ -58,7 +58,7 @@ function AppLayout() {
     <div className="grid-bg relative flex h-screen w-screen overflow-hidden">
       <ParticlesBg className="pointer-events-none fixed inset-0 z-0" />
       {/* Sidebar */}
-      <aside className="flex w-60 flex-col border-r border-border bg-sidebar">
+      <aside className="relative z-10 flex w-60 flex-col border-r border-border bg-sidebar">
         <div className="flex items-center gap-3 px-5 py-5">
           <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary text-primary-foreground">
             <Shield className="h-5 w-5" />
