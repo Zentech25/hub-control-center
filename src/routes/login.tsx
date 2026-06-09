@@ -170,9 +170,23 @@ function LoginPage() {
               {loading ? "Authenticating" : "Sign in"}
             </Button>
 
+            {/* Exit-to-desktop: in the borderless Tauri desktop build the
+                window has no native close control, so we need an in-app
+                way to quit. See src/lib/desktop.ts for the Tauri wiring. */}
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => exitDesktopApp()}
+              className="w-full font-mono uppercase tracking-widest"
+            >
+              <DoorOpen className="mr-2 h-4 w-4" />
+              Exit to Desktop
+            </Button>
+
             <p className="text-center text-xs text-muted-foreground">
               Any credentials work in demo mode.
             </p>
+
           </div>
         </motion.form>
       </div>
