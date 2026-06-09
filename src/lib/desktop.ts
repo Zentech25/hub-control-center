@@ -43,17 +43,25 @@ export async function exitDesktopApp(): Promise<void> {
   const isTauri = Boolean(w.__TAURI__ || w.__TAURI_INTERNALS__);
 
   if (isTauri) {
-    // CLAUDE: swap this dynamic import for the real Tauri API once the
-    // `@tauri-apps/api` dependency is added to the desktop build.
+    // CLAUDE: swap this for a real static import once `@tauri-apps/api` is
+    // added to the desktop build's dependencies:
+    //   import { getCurrentWindow } from "@tauri-apps/api/window";
+    //   await getCurrentWindow().close();
+    // The indirection below hides the specifier from Vite's dep scanner so
+    // the web build doesn't 500 trying to resolve a package that isn't
+    // installed yet.
     try {
-      // @ts-expect-error — module only present in the Tauri build
-      const mod = await import("@tauri-apps/api/window");
+      const specifier = "@tauri-apps/api/window";
+      const mod = await (new Function("s", "return import(s)") as (s: string) => Promise<{
+        getCurrentWindow: () => { close: () => Promise<void> };
+      }>)(specifier);
       await mod.getCurrentWindow().close();
       return;
     } catch (e) {
       console.error("Tauri exit failed, falling back to window.close()", e);
     }
   }
+
 
   // Web fallback — usually a no-op unless this window was script-opened.
   window.close();
