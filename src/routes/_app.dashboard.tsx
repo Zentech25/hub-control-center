@@ -34,10 +34,68 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { DEVICES, CATEGORIES, shutdownDevice, type Device } from "@/lib/devices";
+import {
+  DEVICES,
+  CATEGORIES,
+  shutdownDevice,
+  restartDevice,
+  bootDevice,
+  type Device,
+} from "@/lib/devices";
 import { useDeviceStatus } from "@/hooks/use-device-status";
 import { useNavigate } from "@tanstack/react-router";
 import { toast } from "sonner";
+
+type PowerAction = "shutdown" | "restart" | "boot";
+
+interface ActionTarget {
+  device: Device;
+  action: PowerAction;
+}
+
+const ACTION_META: Record<
+  PowerAction,
+  {
+    title: string;
+    verb: string;
+    description: string;
+    icon: typeof Power;
+    confirmVariant: "destructive" | "default";
+    toast: string;
+    run: (ip: string) => Promise<{ ok: boolean }>;
+  }
+> = {
+  shutdown: {
+    title: "Confirm shutdown",
+    verb: "Shut down",
+    description:
+      "This will send a shutdown command to the target endpoint. The host will become unreachable until manually powered on.",
+    icon: Power,
+    confirmVariant: "destructive",
+    toast: "Shutdown command sent",
+    run: shutdownDevice,
+  },
+  restart: {
+    title: "Confirm restart",
+    verb: "Restart",
+    description:
+      "This will reboot the target endpoint. The host will be briefly unreachable while it restarts.",
+    icon: RotateCw,
+    confirmVariant: "destructive",
+    toast: "Restart command sent",
+    run: restartDevice,
+  },
+  boot: {
+    title: "Confirm boot",
+    verb: "Boot up",
+    description:
+      "This will send a Wake-on-LAN magic packet to the target endpoint. Boot can take up to a minute to complete.",
+    icon: PlayCircle,
+    confirmVariant: "default",
+    toast: "Boot command sent",
+    run: bootDevice,
+  },
+};
 
 export const Route = createFileRoute("/_app/dashboard")({
   head: () => ({ meta: [{ title: "Dashboard — CTN Indoor Control" }] }),
