@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { getSession, logout } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
+import { ParticlesBg } from "@/components/particles-bg";
 
 export const Route = createFileRoute("/_app")({
   beforeLoad: () => {
