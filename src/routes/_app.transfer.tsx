@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowRight, FileUp, Loader2, Send, CheckCircle2 } from "lucide-react";
+import { ArrowRight, FileUp, Loader2, Send, CheckCircle2, Monitor, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -183,8 +183,14 @@ function TransferPage() {
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          className="panel space-y-3 p-5"
+          className="panel space-y-4 p-5"
         >
+          <TransferAnimation
+            pct={pct}
+            done={done}
+            sourceLabel={sourceDev?.unit ?? "Source"}
+            destLabel={destDev?.unit ?? "Destination"}
+          />
           <div className="flex items-center justify-between font-mono text-sm">
             <span>{done ? "Complete" : "Transferring…"}</span>
             <span>{pct}%</span>
@@ -199,6 +205,7 @@ function TransferPage() {
         </motion.div>
       )}
 
+
       <div className="flex justify-end">
         <Button onClick={onTransfer} disabled={running} className="font-mono uppercase tracking-widest">
           {running ? (
@@ -212,6 +219,85 @@ function TransferPage() {
     </div>
   );
 }
+
+function TransferAnimation({
+  pct,
+  done,
+  sourceLabel,
+  destLabel,
+}: {
+  pct: number;
+  done: boolean;
+  sourceLabel: string;
+  destLabel: string;
+}) {
+  // Position is driven directly by progress so the flying file stays in
+  // sync with the actual byte-transfer percentage. Inset keeps it between
+  // the two PC icons (roughly 12% → 88% of the track).
+  const x = `calc(${12 + (pct / 100) * 76}% - 14px)`;
+
+  return (
+    <div className="relative h-24 w-full overflow-hidden rounded-md border border-border/60 bg-background/40">
+      {/* Animated dashed transmission line */}
+      <div className="absolute left-[14%] right-[14%] top-1/2 h-px -translate-y-1/2 overflow-hidden">
+        <motion.div
+          className="h-full w-[200%] bg-[linear-gradient(to_right,transparent_0,transparent_6px,hsl(var(--primary)/0.55)_6px,hsl(var(--primary)/0.55)_14px)]"
+          animate={done ? { x: 0 } : { x: ["0%", "-50%"] }}
+          transition={{ duration: 1.2, repeat: done ? 0 : Infinity, ease: "linear" }}
+        />
+      </div>
+
+      {/* Source PC */}
+      <div className="absolute left-3 top-1/2 -translate-y-1/2 flex flex-col items-center gap-1">
+        <motion.div
+          animate={done ? {} : { boxShadow: ["0 0 0 0 hsl(var(--primary)/0.4)", "0 0 0 8px hsl(var(--primary)/0)"] }}
+          transition={{ duration: 1.4, repeat: Infinity }}
+          className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/15 text-primary"
+        >
+          <Monitor className="h-5 w-5" />
+        </motion.div>
+        <span className="max-w-[90px] truncate font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+          {sourceLabel}
+        </span>
+      </div>
+
+      {/* Destination PC */}
+      <div className="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col items-center gap-1">
+        <motion.div
+          animate={done ? { scale: [1, 1.15, 1] } : {}}
+          transition={{ duration: 0.6 }}
+          className={`flex h-10 w-10 items-center justify-center rounded-md ${
+            done ? "bg-online/20 text-online" : "bg-accent/15 text-accent"
+          }`}
+        >
+          <Monitor className="h-5 w-5" />
+        </motion.div>
+        <span className="max-w-[90px] truncate font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+          {destLabel}
+        </span>
+      </div>
+
+      {/* Flying file packet */}
+      {!done && (
+        <motion.div
+          className="absolute top-1/2 -translate-y-1/2"
+          style={{ left: x }}
+          animate={{ y: ["-50%", "-65%", "-50%"] }}
+          transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <div className="relative">
+            <div className="absolute inset-0 -z-10 rounded-full bg-primary/40 blur-md" />
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground shadow-lg">
+              <FileText className="h-4 w-4" />
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+
 
 function EndpointPicker({
   label,
