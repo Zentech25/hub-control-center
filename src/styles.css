@@ -106,6 +106,10 @@
 @layer base {
   * { border-color: var(--color-border); }
   html, body, #root { height: 100%; }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
   body {
     background:
       radial-gradient(1200px 600px at 10% -10%, oklch(0.3 0.05 220 / 0.45), transparent 60%),
@@ -113,10 +117,18 @@
       var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-display);
+    font-feature-settings: "kern", "ss01";
+    font-synthesis-weight: none;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
     overflow: hidden;
   }
-  .font-mono { font-family: var(--font-mono); }
+  svg {
+    shape-rendering: geometricPrecision;
+    text-rendering: geometricPrecision;
+  }
+  .font-mono { font-family: var(--font-mono); font-feature-settings: "kern", "zero"; }
 }
 
 @utility grid-bg {
