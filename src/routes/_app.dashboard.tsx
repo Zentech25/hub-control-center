@@ -110,8 +110,8 @@ function Dashboard() {
   const [cat, setCat] = useState<string>("all");
   const [stat, setStat] = useState<StatusFilter>("all");
   const [refreshing, setRefreshing] = useState(false);
-  const [shutdownTarget, setShutdownTarget] = useState<Device | null>(null);
-  const [shutdownLoading, setShutdownLoading] = useState(false);
+  const [actionTarget, setActionTarget] = useState<ActionTarget | null>(null);
+  const [actionLoading, setActionLoading] = useState(false);
   const navigate = useNavigate();
 
   const filtered = useMemo(() => {
