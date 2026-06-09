@@ -118,7 +118,44 @@ function TransferPage() {
               placeholder="C:\Data\report.bin"
               className="font-mono"
             />
-            <Button variant="secondary" type="button" title="Browse (Tauri integration)">
+            {/* =====================================================================
+                BACKEND INTEGRATION POINT — Remote file browser (Tauri / Rust)
+                =====================================================================
+                CLAUDE: This button must open a file-explorer dialog ON THE SELECTED
+                SOURCE HOST (not on the operator's local machine). The source is a
+                remote workstation, so we cannot use the browser's <input type=file>
+                or Tauri's local `dialog.open` directly.
+            
+                Recommended approach:
+                  1. Expose a Tauri command `list_remote_dir(ip, path)` that returns
+                     `{ entries: [{ name, isDir, size, modified }], parent }`.
+                     Implementation options on the Rust side:
+                       - SMB    : `pavao` / `smb` crate (Windows targets)
+                       - SSH/SFTP: `ssh2` / `russh-sftp` (Linux targets)
+                       - Custom agent: small companion service on each host that
+                         exposes an authenticated HTTP/gRPC dir-listing endpoint.
+                  2. Build a modal "remote file browser" component that calls the
+                     above command, lets the operator navigate folders on
+                     `sourceDev.ip`, and on selection writes the chosen absolute
+                     path back into `setFilePath(...)`.
+                  3. Disable this button until a source endpoint is picked, and
+                     pass `sourceDev.ip` into the dialog so the right host is browsed.
+                  4. Re-use the same dialog (with `destDev.ip`) for the destination
+                     path picker if you want a symmetric UX.
+            
+                Until backend integration lands this button is a no-op stub.
+                ===================================================================== */}
+            <Button
+              variant="secondary"
+              type="button"
+              title="Browse files on the source host (requires Tauri backend)"
+              disabled={!sourceDev}
+              onClick={() => {
+                // TODO(claude): open remote file browser for sourceDev.ip
+                // and call setFilePath(selectedAbsolutePath) on confirm.
+                toast.message("Remote file browser is wired up in the desktop build.");
+              }}
+            >
               <FileUp className="h-4 w-4" />
             </Button>
           </div>
@@ -126,6 +163,7 @@ function TransferPage() {
             Path is resolved on the source host.
           </p>
         </div>
+
         <div className="space-y-2">
           <Label htmlFor="dst-path">Destination path</Label>
           <Input

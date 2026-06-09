@@ -1,12 +1,15 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Shield, Lock, User, Loader2, Radar } from "lucide-react";
+import { Shield, Lock, User, Loader2, Radar, DoorOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { login } from "@/lib/auth";
+import { exitDesktopApp } from "@/lib/desktop";
 import { ParticlesBg } from "@/components/particles-bg";
+import zenLogo from "@/assets/zen-logo.jpg.asset.json";
+
 
 export const Route = createFileRoute("/login")({
   head: () => ({ meta: [{ title: "Sign in — CTN Indoor Control" }] }),
@@ -67,7 +70,13 @@ function LoginPage() {
               </div>
               <div className="font-mono text-lg font-semibold">Control Hub</div>
             </div>
+            <img
+              src={zenLogo.url}
+              alt="Zen Technologies"
+              className="ml-auto h-10 w-auto rounded-sm bg-white/95 p-1"
+            />
           </div>
+
 
           <div className="space-y-4">
             <Radar className="h-10 w-10 text-accent" />
@@ -161,9 +170,23 @@ function LoginPage() {
               {loading ? "Authenticating" : "Sign in"}
             </Button>
 
+            {/* Exit-to-desktop: in the borderless Tauri desktop build the
+                window has no native close control, so we need an in-app
+                way to quit. See src/lib/desktop.ts for the Tauri wiring. */}
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => exitDesktopApp()}
+              className="w-full font-mono uppercase tracking-widest"
+            >
+              <DoorOpen className="mr-2 h-4 w-4" />
+              Exit to Desktop
+            </Button>
+
             <p className="text-center text-xs text-muted-foreground">
               Any credentials work in demo mode.
             </p>
+
           </div>
         </motion.form>
       </div>
