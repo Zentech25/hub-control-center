@@ -70,7 +70,13 @@ function LoginPage() {
               </div>
               <div className="font-mono text-lg font-semibold">Control Hub</div>
             </div>
+            <img
+              src={zenLogo.url}
+              alt="Zen Technologies"
+              className="ml-auto h-10 w-auto rounded-sm bg-white/95 p-1"
+            />
           </div>
+
 
           <div className="space-y-4">
             <Radar className="h-10 w-10 text-accent" />
