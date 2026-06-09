@@ -271,7 +271,7 @@ function Dashboard() {
                         key={d.id}
                         device={d}
                         status={status[d.id] ?? "unknown"}
-                        onShutdown={() => setShutdownTarget(d)}
+                        onAction={(action) => setActionTarget({ device: d, action })}
                         onTransfer={() =>
                           navigate({
                             to: "/transfer",
@@ -288,49 +288,64 @@ function Dashboard() {
         </div>
       )}
 
-      {/* Shutdown dialog */}
-      <Dialog open={!!shutdownTarget} onOpenChange={(o) => !o && setShutdownTarget(null)}>
+      {/* Action confirmation dialog */}
+      <Dialog
+        open={!!actionTarget}
+        onOpenChange={(o) => !o && !actionLoading && setActionTarget(null)}
+      >
         <DialogContent>
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Power className="h-5 w-5 text-destructive" />
-              Confirm shutdown
-            </DialogTitle>
-            <DialogDescription>
-              This will send a shutdown command to the target endpoint. The host
-              will become unreachable until rebooted.
-            </DialogDescription>
-          </DialogHeader>
-          {shutdownTarget && (
-            <div className="rounded-md border border-border bg-panel/40 p-3 font-mono text-sm">
-              <div>
-                <span className="text-muted-foreground">Unit:</span> {shutdownTarget.unit}
-              </div>
-              <div>
-                <span className="text-muted-foreground">CPU:</span> {shutdownTarget.cpu}
-              </div>
-              <div>
-                <span className="text-muted-foreground">IP:</span> {shutdownTarget.ip}
-              </div>
-            </div>
-          )}
-          <DialogFooter>
-            <Button variant="ghost" onClick={() => setShutdownTarget(null)}>
-              Cancel
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={confirmShutdown}
-              disabled={shutdownLoading}
-            >
-              {shutdownLoading ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : (
-                <Power className="mr-2 h-4 w-4" />
-              )}
-              Shut down
-            </Button>
-          </DialogFooter>
+          {actionTarget && (() => {
+            const meta = ACTION_META[actionTarget.action];
+            const Icon = meta.icon;
+            const destructive = meta.confirmVariant === "destructive";
+            return (
+              <>
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-2">
+                    {destructive ? (
+                      <AlertTriangle className="h-5 w-5 text-destructive" />
+                    ) : (
+                      <Icon className="h-5 w-5 text-primary" />
+                    )}
+                    {meta.title}
+                  </DialogTitle>
+                  <DialogDescription>{meta.description}</DialogDescription>
+                </DialogHeader>
+                <div className="rounded-md border border-border bg-panel/40 p-3 font-mono text-sm">
+                  <div>
+                    <span className="text-muted-foreground">Unit:</span> {actionTarget.device.unit}
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">CPU:</span> {actionTarget.device.cpu}
+                  </div>
+                  <div>
+                    <span className="text-muted-foreground">IP:</span> {actionTarget.device.ip}
+                  </div>
+                </div>
+                <DialogFooter>
+                  <Button
+                    variant="ghost"
+                    onClick={() => setActionTarget(null)}
+                    disabled={actionLoading}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    variant={meta.confirmVariant}
+                    onClick={confirmAction}
+                    disabled={actionLoading}
+                  >
+                    {actionLoading ? (
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : (
+                      <Icon className="mr-2 h-4 w-4" />
+                    )}
+                    {meta.verb}
+                  </Button>
+                </DialogFooter>
+              </>
+            );
+          })()}
         </DialogContent>
       </Dialog>
     </div>
