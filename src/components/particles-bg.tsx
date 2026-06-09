@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
+import Particles, { ParticlesProvider } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { ISourceOptions } from "@tsparticles/engine";
+import type { Engine, ISourceOptions } from "@tsparticles/engine";
 
 const options: ISourceOptions = {
   fullScreen: { enable: false },
@@ -44,23 +43,25 @@ const options: ISourceOptions = {
   },
 };
 
+async function init(engine: Engine) {
+  await loadSlim(engine);
+}
+
+export function ParticlesProviderWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <ParticlesProvider init={init}>{children}</ParticlesProvider>;
+}
+
 export function ParticlesBg({ className }: { className?: string }) {
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadSlim(engine);
-    }).then(() => setReady(true));
-  }, []);
-
-  if (!ready) return null;
   return (
     <Particles
       id="tsparticles"
       options={options}
       className={
-        className ??
-        "pointer-events-none absolute inset-0 z-0 [&>canvas]:!pointer-events-auto"
+        className ?? "pointer-events-none absolute inset-0 z-0"
       }
     />
   );
